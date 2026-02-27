@@ -1,0 +1,1394 @@
+/* 三角洲配装助手 - 自定义样式 */
+
+/* 基础样式 */
+body {
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    background: url('d47cfaec191c.jpg') center center fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    color: #f8fafc;
+    position: relative;
+}
+
+body.modal-open {
+    overflow: hidden !important;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(30, 27, 75, 0.85) 50%, rgba(30, 41, 59, 0.88) 100%);
+    z-index: -1;
+}
+
+/* 滚动快照效果 - 已禁用以提升性能 */
+section {
+    scroll-margin-top: 80px;
+}
+
+/* 导航链接 */
+.nav-link {
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+
+.nav-link:hover {
+    background-color: rgba(55, 65, 81, 0.8);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.nav-link.active {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: white;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+}
+
+/* 导航栏增强 */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(135deg, rgba(31, 41, 55, 0.96) 0%, rgba(17, 24, 39, 0.98) 100%);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+    border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+}
+
+/* 玩家类型按钮 - 增强反馈 */
+.player-type-btn {
+    background: linear-gradient(135deg, rgba(55, 65, 81, 0.9) 0%, rgba(31, 41, 55, 0.95) 100%);
+    border: 2px solid rgba(75, 85, 99, 0.5);
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.player-type-btn:hover {
+    background: linear-gradient(135deg, rgba(75, 85, 99, 0.9) 0%, rgba(55, 65, 81, 0.95) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    border-color: rgba(59, 130, 246, 0.6);
+}
+
+.player-type-btn.active {
+    border-color: #3b82f6;
+    background: linear-gradient(135deg, rgba(75, 85, 99, 0.95) 0%, rgba(55, 65, 81, 0.98) 100%);
+    box-shadow: 0 6px 24px rgba(59, 130, 246, 0.4);
+}
+
+/* 地图模式按钮 */
+.map-mode-btn {
+    padding: 0.75rem 0.5rem;
+    background: linear-gradient(135deg, rgba(55, 65, 81, 0.9) 0%, rgba(31, 41, 55, 0.95) 100%);
+    border-radius: 0.5rem;
+    text-align: center;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    border: 2px solid rgba(75, 85, 99, 0.5);
+    font-weight: bold;
+}
+
+.map-mode-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, rgba(75, 85, 99, 0.9) 0%, rgba(55, 65, 81, 0.95) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.map-mode-btn.active {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: white;
+    border-color: #3b82f6;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+}
+
+.map-mode-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: rgba(31, 41, 55, 0.8);
+}
+
+/* 干员筛选按钮 */
+.operator-filter-btn {
+    padding: 0.75rem 1.25rem;
+    background: linear-gradient(135deg, rgba(55, 65, 81, 0.9) 0%, rgba(31, 41, 55, 0.95) 100%);
+    border-radius: 0.75rem;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    border: 1px solid rgba(75, 85, 99, 0.4);
+}
+
+.operator-filter-btn:hover {
+    background: linear-gradient(135deg, rgba(75, 85, 99, 0.9) 0%, rgba(55, 65, 81, 0.95) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    border-color: rgba(59, 130, 246, 0.5);
+}
+
+.operator-filter-btn.active {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: white;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+    border-color: #3b82f6;
+}
+
+/* 快速问题按钮 */
+.quick-question-btn {
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, rgba(55, 65, 81, 0.9) 0%, rgba(31, 41, 55, 0.95) 100%);
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    border: 1px solid rgba(75, 85, 99, 0.4);
+}
+
+.quick-question-btn:hover {
+    background: linear-gradient(135deg, rgba(75, 85, 99, 0.9) 0%, rgba(55, 65, 81, 0.95) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    border-color: rgba(59, 130, 246, 0.5);
+}
+
+/* 聊天输入框和发送按钮 */
+#questionInput {
+    transition: border-color 0.2s, box-shadow 0.2s;
+    border: 2px solid rgba(75, 85, 99, 0.5);
+    background: rgba(31, 41, 55, 0.9);
+}
+
+#questionInput:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    background: rgba(17, 24, 39, 0.95);
+}
+
+#askBtn {
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: linear-gradient(135deg, #2563eb 0%, #059669 100%);
+}
+
+#askBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 24px rgba(59, 130, 246, 0.45);
+}
+
+#askBtn:active {
+    transform: scale(0.95);
+}
+
+/* 自定义滑块 */
+.slider {
+    transition: transform 0.2s;
+}
+
+.slider:hover {
+    transform: scale(1.02);
+}
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    cursor: pointer;
+    border: 2px solid #1f2937;
+    box-shadow: 0 2px 12px rgba(59, 130, 246, 0.4);
+}
+
+.slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.6);
+}
+
+.slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    cursor: pointer;
+    border: 2px solid #1f2937;
+    box-shadow: 0 2px 12px rgba(59, 130, 246, 0.4);
+}
+
+.slider::-moz-range-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.6);
+}
+
+/* 聊天消息样式 */
+.chat-message {
+    margin-bottom: 1rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.chat-message.user {
+    margin-left: auto;
+    max-width: 80%;
+}
+
+.chat-message.ai {
+    margin-right: auto;
+    max-width: 80%;
+}
+
+.chat-message.user .message-content {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    border-top-right-radius: 0.25rem;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+}
+
+.chat-message.ai .message-content {
+    background: linear-gradient(135deg, rgba(55, 65, 81, 0.95) 0%, rgba(31, 41, 55, 0.98) 100%);
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    border-top-left-radius: 0.25rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(75, 85, 99, 0.4);
+}
+
+/* 卡片悬停效果 */
+.gear-card, .operator-card {
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    border: 1px solid rgba(75, 85, 99, 0.4);
+    background: linear-gradient(135deg, rgba(31, 41, 55, 0.9) 0%, rgba(17, 24, 39, 0.95) 100%);
+}
+
+.gear-card:hover, .operator-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    border-color: rgba(59, 130, 246, 0.6);
+    background: linear-gradient(135deg, rgba(55, 65, 81, 0.95) 0%, rgba(31, 41, 55, 0.98) 100%);
+}
+
+/* 干员卡片内容动画 */
+.operator-card * {
+    transition: color 0.2s, transform 0.2s;
+}
+
+.operator-card:hover h3 {
+    color: #60a5fa;
+}
+
+.operator-card:hover .operator-type {
+    background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+}
+
+/* 进度条样式 */
+.progress-bar {
+    height: 0.5rem;
+    background-color: rgba(31, 41, 55, 0.9);
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+    transition: width 0.3s;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .grid-cols-4 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(31, 41, 55, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #4b5563 0%, #6b7280 100%);
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #6b7280 0%, #9ca3af 100%);
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* 滚动动画 - 简化 */
+.scroll-reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-reveal:not(.active) {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 脉冲动画 - 已禁用以提升性能 */
+.pulse {
+}
+
+/* 呼吸动画 - 已禁用以提升性能 */
+.breathe {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+}
+
+/* 加载动画增强 */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top: 3px solid #3b82f6;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+    box-shadow: 0 0 24px rgba(59, 130, 246, 0.35);
+    will-change: transform;
+}
+
+/* 页面过渡效果 - 简化 */
+section {
+    position: relative;
+}
+
+/* 平滑滚动 */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+/* 视差滚动效果 - 已禁用以提升性能 */
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+/* 章节切换动画 - 已禁用以提升性能 */
+section {
+    opacity: 1;
+}
+
+/* 滚动时的视差效果 - 已禁用 */
+body {
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 背景武器元素 - 已禁用以提升性能 */
+.background-elements {
+    display: none;
+}
+
+/* 武器剪影 - 已禁用 */
+.weapon-silhouette {
+    display: none;
+}
+
+/* 装备元素 - 已禁用 */
+.equipment-element {
+    display: none;
+}
+
+/* 地图元素 - 已禁用 */
+.map-element {
+    display: none;
+}
+
+/* 浮动动画 - 已禁用 */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+    50% {
+        transform: translateY(0) rotate(0deg);
+    }
+    75% {
+        transform: translateY(20px) rotate(-5deg);
+    }
+}
+
+/* 背景脉冲动画 - 已禁用 */
+@keyframes backgroundPulse {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+/* 反馈消息样式 */
+#feedbackMessage {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* 全局卡片样式增强 - 性能优化版 */
+section > div.bg-gray-800 {
+    border-radius: 1.25rem;
+    border: 1px solid rgba(75, 85, 99, 0.35);
+    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+    background: linear-gradient(135deg, rgba(31, 41, 55, 0.92) 0%, rgba(17, 24, 39, 0.95) 100%);
+    position: relative;
+}
+
+section > div.bg-gray-800:hover {
+    box-shadow: 0 8px 36px rgba(59, 130, 246, 0.25);
+    transform: translateY(-2px);
+    border-color: rgba(59, 130, 246, 0.5);
+}
+
+/* 发光效果 - 已禁用 */
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+/* 标题发光效果 */
+h2 {
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 0 24px rgba(59, 130, 246, 0.4);
+}
+
+/* 章节标题装饰 */
+section > div.flex.items-center.mb-6::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, transparent 100%);
+    border-radius: 1px;
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+}
+
+/* 按钮光效增强 - 性能优化版 */
+#generateBtn {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+}
+
+#generateBtn:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 12px 44px rgba(59, 130, 246, 0.55);
+}
+
+/* 容器内边距优化 */
+main {
+    max-width: 1400px;
+}
+
+/* 响应式调整增强 */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    main {
+        padding: 1rem;
+    }
+    
+    nav {
+        padding: 0.75rem 1rem;
+    }
+    
+    nav .flex.flex-col.md\:flex-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    nav .flex.space-x-4 {
+        margin-top: 1rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .nav-link {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+    }
+    
+    #loadout .grid.grid-cols-1.lg\:grid-cols-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    #operatorList {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    #chatContainer {
+        height: 40vh;
+    }
+    
+    .chat-message.user,
+    .chat-message.ai {
+        max-width: 90%;
+    }
+    
+    .grid.grid-cols-2.md\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    #about .grid.grid-cols-1.md\:grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .player-type-btn {
+        padding: 1rem;
+    }
+    
+    .map-mode-btn {
+        padding: 0.5rem;
+        font-size: 0.875rem;
+    }
+    
+    #generateBtn {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+    
+    .background-elements {
+        display: none;
+    }
+    
+    body {
+        scroll-snap-type: none;
+    }
+    
+    section {
+        scroll-snap-align: none;
+        min-height: auto;
+    }
+}
+
+/* 平板设备响应式 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #operatorList {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    #loadout .grid.grid-cols-1.lg\:grid-cols-4 {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+/* 强度标签颜色 */
+.strength-S {
+    background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
+}
+
+.strength-A {
+    background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
+}
+
+.strength-B {
+    background: linear-gradient(135deg, #ca8a04 0%, #d97706 100%);
+}
+
+.strength-C {
+    background: linear-gradient(135deg, #16a34a 0%, #059669 100%);
+}
+
+.strength-D {
+    background: rgba(75, 85, 99, 0.95);
+}
+
+/* 地图标签 */
+.map-tag-zero_dam {
+    background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+}
+
+.map-tag-aerospace_base {
+    background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
+}
+
+.map-tag-tidal_prison {
+    background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
+}
+
+.map-tag-longbow_valley {
+    background: linear-gradient(135deg, #16a34a 0%, #059669 100%);
+}
+
+.map-tag-bukshi {
+    background: linear-gradient(135deg, #ca8a04 0%, #d97706 100%);
+}
+
+/* 加载动画 */
+.loading-spinner {
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top: 3px solid #3b82f6;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 渐变文字 */
+.gradient-text {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* 价格样式 */
+.price-high {
+    color: #f87171;
+    font-weight: bold;
+}
+
+.price-medium {
+    color: #fbbf24;
+    font-weight: bold;
+}
+
+.price-low {
+    color: #34d399;
+    font-weight: bold;
+}
+
+/* 新增：玩家类型图标动画 */
+.player-type-btn.active .fa-mouse,
+.player-type-btn.active .fa-user-ninja,
+.player-type-btn.active .fa-fist-raised {
+    animation: bounce 0.3s;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* 新增：地图模式按钮颜色 */
+.map-mode-btn[data-mode="常规"] {
+    background: linear-gradient(135deg, rgba(55, 65, 81, 0.9) 0%, rgba(31, 41, 55, 0.95) 100%);
+}
+
+.map-mode-btn[data-mode="机密"] {
+    background: linear-gradient(135deg, rgba(76, 29, 149, 0.9) 0%, rgba(55, 21, 109, 0.95) 100%);
+}
+
+.map-mode-btn[data-mode="绝密"] {
+    background: linear-gradient(135deg, rgba(124, 45, 18, 0.9) 0%, rgba(88, 28, 13, 0.95) 100%);
+}
+
+.map-mode-btn[data-mode="常规"]:hover:not(:disabled) {
+    background: linear-gradient(135deg, rgba(75, 85, 99, 0.9) 0%, rgba(55, 65, 81, 0.95) 100%);
+}
+
+.map-mode-btn[data-mode="机密"]:hover:not(:disabled) {
+    background: linear-gradient(135deg, rgba(91, 33, 182, 0.95) 0%, rgba(76, 29, 149, 0.98) 100%);
+}
+
+.map-mode-btn[data-mode="绝密"]:hover:not(:disabled) {
+    background: linear-gradient(135deg, rgba(154, 52, 18, 0.95) 0%, rgba(124, 45, 18, 0.98) 100%);
+}
+
+.bg-red-900\/30 {
+    background-color: rgba(127, 29, 29, 0.3);
+}
+
+/* ========================================
+   性能优化：减少动画偏好
+   尊重用户的系统设置，禁用不必要的动画
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .loading-spinner {
+        animation: none;
+        border: 3px solid #3b82f6;
+    }
+    
+    .chat-message {
+        animation: none;
+    }
+    
+    .scroll-reveal:not(.active) {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* GPU 加速提示 */
+.gear-card, .operator-card, .nav-link, .player-type-btn, 
+.operator-filter-btn, .quick-question-btn, #generateBtn, #askBtn {
+    will-change: transform;
+}
+
+/* 硬件加速优化 */
+.loading-spinner {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* ========================================
+   弹窗样式 - 重新实现
+   ======================================== */
+
+/* 弹窗外层容器 */
+#operatorModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+/* 弹窗遮罩层 */
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#operatorModal.show .modal-overlay {
+    opacity: 1;
+}
+
+/* 弹窗容器 */
+.modal-container {
+    position: relative;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.98) 0%, rgba(15, 23, 42, 0.98) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 1rem;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    max-width: 500px;
+    width: 90vw;
+    max-height: 85vh;
+    overflow: hidden;
+    transform: scale(0.9) translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    pointer-events: auto;
+}
+
+#operatorModal.show .modal-container {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* 弹窗头部 */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.1) 100%);
+    border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+/* 弹窗标题 */
+.modal-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin: 0;
+    color: white;
+}
+
+/* 弹窗副标题 */
+.modal-subtitle {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0.25rem 0 0 0;
+}
+
+/* 弹窗关闭按钮 */
+.modal-close-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+}
+
+.modal-close-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+    border-color: rgba(239, 68, 68, 0.5);
+    transform: scale(1.05);
+}
+
+/* 弹窗内容区域 */
+.modal-content {
+    padding: 1.25rem;
+    overflow-y: auto;
+    max-height: calc(80vh - 160px);
+}
+
+/* 弹窗区块 */
+.modal-section {
+    margin-bottom: 1.25rem;
+}
+
+.modal-section:last-child {
+    margin-bottom: 0;
+}
+
+/* 弹窗区块标题 */
+.modal-section-title {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #a5b4fc;
+}
+
+.modal-section-title i {
+    margin-right: 0.5rem;
+    color: #818cf8;
+}
+
+/* 弹窗信息卡片 */
+.modal-info-card {
+    background: rgba(55, 65, 81, 0.4);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+/* 弹窗文本样式 */
+.modal-text-primary {
+    color: #e5e7eb;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.9375rem;
+}
+
+.modal-text-muted {
+    color: #9ca3af;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9375rem;
+}
+
+/* 弹窗网格布局 */
+.modal-grid {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.modal-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 640px) {
+    .modal-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 弹窗技能卡片 */
+.modal-skill-card {
+    background: rgba(139, 92, 246, 0.1);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+/* 弹窗技能名称 */
+.modal-skill-name {
+    font-weight: 600;
+    color: #c4b5fd;
+    margin: 0 0 0.5rem 0;
+    display: flex;
+    align-items: center;
+    font-size: 0.9375rem;
+}
+
+.modal-skill-name i {
+    margin-right: 0.5rem;
+    color: #a78bfa;
+}
+
+/* 弹窗技能描述 */
+.modal-skill-desc {
+    color: #d1d5db;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* 弹窗适配度卡片 */
+.modal-suitability-card {
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+/* 弹窗适配度头部 */
+.modal-suitability-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+/* 弹窗适配度类型 */
+.modal-suitability-type {
+    font-weight: 600;
+    color: #f3f4f6;
+    font-size: 0.9375rem;
+}
+
+/* 弹窗适配度徽章 */
+.modal-suitability-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+}
+
+.modal-suitability-badge.S {
+    background: linear-gradient(135deg, #7c3aed, #db2777);
+}
+
+.modal-suitability-badge.A {
+    background: linear-gradient(135deg, #dc2626, #f97316);
+}
+
+.modal-suitability-badge.B {
+    background: linear-gradient(135deg, #d97706, #fbbf24);
+}
+
+.modal-suitability-badge.C {
+    background: linear-gradient(135deg, #059669, #10b981);
+}
+
+.modal-suitability-badge.D {
+    background: linear-gradient(135deg, #6b7280, #9ca3af);
+}
+
+/* 弹窗适配度原因 */
+.modal-suitability-reason {
+    color: #d1d5db;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* 弹窗底部 */
+.modal-footer {
+    padding: 1rem 1.25rem;
+    background: rgba(15, 23, 42, 0.5);
+    border-top: 1px solid rgba(99, 102, 241, 0.2);
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* 弹窗操作按钮 */
+.modal-action-btn {
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: 0.9375rem;
+}
+
+/* 弹窗主按钮 */
+.modal-primary-btn {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.modal-primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.modal-primary-btn:active {
+    transform: translateY(0);
+}
+
+/* 干员卡片图片样式 */
+.operator-card-image-container {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+}
+
+.operator-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.3s ease;
+}
+
+.operator-card-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(31, 41, 55, 0.95) 100%);
+    pointer-events: none;
+}
+
+.operator-card:hover .operator-card-image {
+    transform: scale(1.05);
+}
+
+/* 地图图片样式 */
+.map-image-container {
+    width: 100%;
+    height: 200px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.map-image-container:hover .map-image {
+    transform: scale(1.02);
+}
+
+/* ========================================
+   增强通知窗口系统 - Enhanced Notification System
+   ======================================== */
+
+/* 通知容器 */
+.notification-container {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: none;
+    max-width: 320px;
+    width: 100%;
+}
+
+/* 通知项基础样式 */
+.notification-item {
+    position: relative;
+    padding: 10px 14px;
+    border-radius: 10px;
+    box-shadow: 
+        0 6px 24px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    color: white;
+    pointer-events: auto;
+    transform: translateX(120%);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: hidden;
+}
+
+/* 通知项显示状态 */
+.notification-item.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* 通知项退出状态 */
+.notification-item.hide {
+    transform: translateX(120%);
+    opacity: 0;
+    margin-bottom: -48px;
+    transition: all 0.25s ease-in;
+}
+
+/* 成功类型 - 高级青绿渐变（含不透明度渐变） */
+.notification-item.success {
+    background: linear-gradient(90deg, 
+        rgba(20, 184, 166, 0.3) 0%, 
+        rgba(6, 182, 212, 0.5) 30%,
+        rgba(20, 184, 166, 0.85) 70%,
+        rgba(6, 182, 212, 0.95) 100%);
+    border-left: 3px solid rgba(45, 212, 191, 0.7);
+    box-shadow: 
+        0 6px 24px rgba(20, 184, 166, 0.15),
+        0 0 0 1px rgba(20, 184, 166, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* 错误类型 - 高级玫瑰渐变（含不透明度渐变） */
+.notification-item.error {
+    background: linear-gradient(90deg, 
+        rgba(219, 39, 119, 0.3) 0%, 
+        rgba(168, 85, 247, 0.5) 30%,
+        rgba(219, 39, 119, 0.85) 70%,
+        rgba(168, 85, 247, 0.95) 100%);
+    border-left: 3px solid rgba(232, 121, 249, 0.7);
+    box-shadow: 
+        0 6px 24px rgba(219, 39, 119, 0.15),
+        0 0 0 1px rgba(219, 39, 119, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* 警告类型 - 高级琥珀渐变（含不透明度渐变） */
+.notification-item.warning {
+    background: linear-gradient(90deg, 
+        rgba(245, 158, 11, 0.3) 0%, 
+        rgba(236, 72, 153, 0.5) 30%,
+        rgba(245, 158, 11, 0.85) 70%,
+        rgba(236, 72, 153, 0.95) 100%);
+    border-left: 3px solid rgba(251, 191, 36, 0.7);
+    box-shadow: 
+        0 6px 24px rgba(245, 158, 11, 0.15),
+        0 0 0 1px rgba(245, 158, 11, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* 信息类型 - 高级靛蓝渐变（含不透明度渐变） */
+.notification-item.info {
+    background: linear-gradient(90deg, 
+        rgba(99, 102, 241, 0.3) 0%, 
+        rgba(59, 130, 246, 0.5) 30%,
+        rgba(99, 102, 241, 0.85) 70%,
+        rgba(59, 130, 246, 0.95) 100%);
+    border-left: 3px solid rgba(129, 140, 248, 0.7);
+    box-shadow: 
+        0 6px 24px rgba(99, 102, 241, 0.15),
+        0 0 0 1px rgba(99, 102, 241, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* 通知图标 */
+.notification-icon {
+    font-size: 1.125rem;
+    min-width: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 通知内容 */
+.notification-content {
+    flex-grow: 1;
+    line-height: 1.6;
+    padding-right: 8px;
+}
+
+/* 通知标题 */
+.notification-title {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 4px;
+    display: block;
+}
+
+/* 关闭按钮 */
+.notification-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    opacity: 0.8;
+}
+
+.notification-close:hover {
+    background: rgba(255, 255, 255, 0.25);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.notification-close:active {
+    transform: scale(0.95);
+}
+
+/* 进度条 */
+.notification-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 0 0 0 16px;
+    transition: width linear;
+}
+
+/* 响应式设计 */
+@media (max-width: 640px) {
+    .notification-container {
+        bottom: 16px;
+        right: 16px;
+        left: 16px;
+        max-width: none;
+    }
+    
+    .notification-item {
+        padding: 14px 16px;
+        font-size: 0.875rem;
+    }
+    
+    .notification-icon {
+        font-size: 1.25rem;
+        min-width: 24px;
+    }
+}
+
+/* 减少动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+    .notification-item {
+        transition: opacity 0.1s ease;
+        transform: none;
+    }
+    
+    .notification-item.show,
+    .notification-item.hide {
+        transform: none;
+    }
+}
+
+/* 性能优化 */
+.notification-item {
+    will-change: transform, opacity;
+    contain: layout style;
+}
+
+.notification-container {
+    contain: layout;
+}
