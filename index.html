@@ -8,25 +8,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <script>
-        var images = document.getElementsByTagName('img');
-        var githubUser = 'wtnl0318';
-        var githubRepo = 'sjz';
-        var githubBranch = 'master';
-        
-        for (var i = 0; i < images.length; i++) {
-            var img = images[i];
-            var originalSrc = img.src;
-            
-            if (originalSrc.indexOf('github.io') > -1) {
-                var newSrc = originalSrc.replace(
-                    /https?:\/\/[^\/]+\.github\.io\/[^\/]+\//,
-                    'https://cdn.jsdelivr.net/gh/' + githubUser + '/' + githubRepo + '@' + githubBranch + '/'
-                );
-                img.src = newSrc;
-            }
-        }
-    </script>
 </head>
 <body class="bg-gray-900 text-gray-100">
     <!-- 背景元素 -->
@@ -440,4 +421,5 @@
     
     <script src="script.js"></script>
 </body>
+
 </html>
