@@ -1,0 +1,158 @@
+{
+    "helmets": [
+      {
+        "id": "gn_heavy_nvg",
+        "name": "GN重型夜视头",
+        "type": "头盔",
+        "level": 5,
+        "price": 600000,
+        "strength": "S",
+        "pros": "无遮挡视野，夜视功能，防护等级高",
+        "cons": "价格昂贵，重量较大",
+        "suitable_for": ["夜间作战", "高价值任务"],
+        "tags": ["夜视", "高级头盔", "高防护"]
+      },
+      {
+        "id": "level4_hearing",
+        "name": "4级听力头",
+        "type": "头盔",
+        "level": 4,
+        "price": 200000,
+        "strength": "A",
+        "pros": "提供20%听力加成，防护等级中等",
+        "cons": "价格较高，赛季中可能涨价",
+        "suitable_for": ["侦察", "单人作战"],
+        "tags": ["听力增强", "四级头", "侦察"]
+      },
+      {
+        "id": "dich_training",
+        "name": "DICH训练头盔",
+        "type": "头盔",
+        "level": "未知",
+        "price": 135000,
+        "strength": "B",
+        "pros": "性价比高，战备贡献突出",
+        "cons": "防护能力可能不如高级头盔",
+        "suitable_for": ["新手过渡", "经济配置"],
+        "tags": ["性价比", "新手友好", "过渡装"]
+      },
+      {
+        "id": "mc201_helmet",
+        "name": "MC201防弹头盔",
+        "type": "头盔",
+        "level": 3,
+        "price": 40000,
+        "strength": "B",
+        "pros": "提供20%听力buff，价格适中",
+        "cons": "防护等级较低",
+        "suitable_for": ["经济配置", "低风险任务"],
+        "tags": ["三级头", "听力增强", "经济型"]
+      }
+    ],
+    
+    "armors": [
+      {
+        "id": "tgh_armor",
+        "name": "TGH防弹衣",
+        "type": "护甲",
+        "level": 3,
+        "price": 63000,
+        "strength": "A",
+        "pros": "无瞄准速度惩罚，轻微移速影响，新手首选",
+        "cons": "防护等级较低",
+        "suitable_for": ["新手入门", "快速移动"],
+        "tags": ["三级甲", "无瞄准惩罚", "新手推荐"]
+      },
+      {
+        "id": "mk2_vest",
+        "name": "MK-2战术背心",
+        "type": "护甲",
+        "level": 4,
+        "price": 195000,
+        "strength": "A",
+        "pros": "满耐久110点，维修损失9%上限，均衡首选",
+        "cons": "价格较高",
+        "suitable_for": ["均衡作战", "中高端对局"],
+        "tags": ["四级甲", "均衡型", "满耐久高"]
+      },
+      {
+        "id": "ha2_heavy_armor",
+        "name": "HA-2重型防弹衣",
+        "type": "护甲",
+        "level": 6,
+        "price": 3500000,
+        "strength": "S",
+        "pros": "仅降低3%移速、1%瞄准速度，手感接近四级甲",
+        "cons": "价格极其昂贵",
+        "suitable_for": ["高端对局", "高价值任务"],
+        "tags": ["六级甲", "顶级防护", "高性价比手感"]
+      }
+    ],
+    
+    "chest_rigs": [
+      {
+        "id": "assault_tactical_vest",
+        "name": "强袭战术背心",
+        "type": "胸挂",
+        "slots": 14,
+        "price": 20210,
+        "strength": "A",
+        "pros": "最多格数，适合高负载攻坚",
+        "cons": "瞄准速度-1%",
+        "suitable_for": ["高负载作战", "攻坚任务"],
+        "tags": ["高容量", "攻坚专用", "可兑换"]
+      },
+      {
+        "id": "gir_field_vest",
+        "name": "GIR野战胸挂",
+        "type": "胸挂",
+        "slots": 16,
+        "price": 120000,
+        "strength": "S",
+        "pros": "市场最优解，配备多个战术插袋",
+        "cons": "价格较高",
+        "suitable_for": ["综合任务", "战斗流"],
+        "tags": ["高容量", "多插袋", "市场最优"]
+      },
+      {
+        "id": "universal_tactical_vest",
+        "name": "通用战术胸挂",
+        "type": "胸挂",
+        "slots": 9,
+        "price": 4510,
+        "strength": "B",
+        "pros": "新手入门、跑刀速刷，极致性价比",
+        "cons": "容量较小",
+        "suitable_for": ["新手入门", "跑刀速刷"],
+        "tags": ["新手友好", "性价比", "可兑换"]
+      }
+    ],
+    
+    "backpacks": [
+      {
+        "id": "ga_field_pack",
+        "name": "GA野战背包",
+        "type": "背包",
+        "slots": 20,
+        "price": 20000,
+        "strength": "A",
+        "pros": "无移速负面效果，性价比高",
+        "cons": "容量中等",
+        "suitable_for": ["日常刷图", "快速移动"],
+        "tags": ["无移速惩罚", "蓝色品质", "性价比高"]
+      },
+      {
+        "id": "d3_tactical_climbing_pack",
+        "name": "D3战术登山包",
+        "type": "背包",
+        "slots": 28,
+        "price": 95000,
+        "strength": "S",
+        "pros": "移速仅-1%，性价比最高的金色背包",
+        "cons": "金色品质价格较高",
+        "suitable_for": ["高价值任务", "长时间作战"],
+        "tags": ["金色品质", "高性价比", "大容量"]
+      }
+     
+    ]
+  }
