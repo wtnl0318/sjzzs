@@ -89,6 +89,7 @@ let conversationHistory = [];
 let aiEnabled = true;
 let deepseekApiKey = '870faf91344c41eaadf0a5e53ff7ea1b.9w9AjuhFJoquNNIw';
 let hasGeneratedLoadout = false;
+let currentGeneratedLoadout = null; // Stores the latest generated loadout for AI context
 // 全局弹窗变量
 let currentModal = null;
 
@@ -2441,6 +2442,20 @@ if (playerType === "猛攻流") {
     
     displayLoadout(optimized.weapon, adjusted.gear, selectedOperators, adjusted.budgetAllocation, totalCost);
     hasGeneratedLoadout = true;
+    
+    // Store the generated loadout for AI context
+    currentGeneratedLoadout = {
+        weapon: optimized.weapon,
+        gear: adjusted.gear,
+        operators: selectedOperators,
+        budgetAllocation: adjusted.budgetAllocation,
+        totalCost: totalCost
+    };
+    
+    // Proactively comment on the loadout
+    setTimeout(() => {
+        agentCommentOnLoadout(currentGeneratedLoadout);
+    }, 1500); // Delay slightly for better UX
         
 } catch (error) {
     clearTimeout(timeout);
@@ -2462,6 +2477,20 @@ if (playerType === "猛攻流") {
         
         displayLoadout(simpleWeapon, simpleGear, simpleOperators, {medical: 30000, ammo: 20000}, simpleTotalCost);
         
+        // Store the simplified loadout
+        currentGeneratedLoadout = {
+            weapon: simpleWeapon,
+            gear: simpleGear,
+            operators: simpleOperators,
+            budgetAllocation: {medical: 30000, ammo: 20000},
+            totalCost: simpleTotalCost
+        };
+        
+        // Proactively comment on the loadout
+        setTimeout(() => {
+            agentCommentOnLoadout(currentGeneratedLoadout);
+        }, 1500);
+
     } catch (fallbackError) {
         console.error("备选方案也失败:", fallbackError);
         
@@ -4465,13 +4494,29 @@ async function generateAnswerWithAI(question, conversationHistory) {
             return `${o.name}(${o.type}):${o.skills.main.substring(0, 30)}...`;
         }).join('；');
 
+        // 构建当前配装上下文
+        let loadoutContext = "用户尚未生成配装方案。";
+        if (currentGeneratedLoadout) {
+            const w = currentGeneratedLoadout.weapon;
+            const g = currentGeneratedLoadout.gear;
+            loadoutContext = `用户已生成配装方案：
+            - 武器：${w ? w.name : '无'} (${w ? formatPrice(w.price) : '0'})
+            - 防具：头盔-${g.helmet?.name || '无'}, 护甲-${g.armor?.name || '无'}, 背包-${g.backpack?.name || '无'}
+            - 总成本：${formatPrice(currentGeneratedLoadout.totalCost)}
+            - 推荐干员：${currentGeneratedLoadout.operators.map(o => o.name).join(', ')}`;
+        }
+
         const systemPrompt = `你是《三角洲行动》配装助手"派宝"。
 
 【回答规则】
 - 直接回答用户问题，简短精炼，80字以内
 - 适当使用emoji
+- 如果用户问为什么选这个配装，请根据当前生成的配装方案解释原因
 
 【玩法】鼠鼠=避战捡漏；堵点夺舍=蹲守埋伏；猛攻流=正面硬刚
+
+【当前生成配装】
+${loadoutContext}
 
 【武器库】${weaponKnowledge}
 
@@ -4521,6 +4566,41 @@ async function generateAnswerWithAI(question, conversationHistory) {
             currentPlayerType === '堵点夺舍' ? '高爆发武器+红狼/露娜' :
             '顶级装备+威龙/蛊'
         }`;
+    }
+}
+
+// Proactive Agent Comment Function
+function agentCommentOnLoadout(loadout) {
+    if (!loadout) return;
+    
+    const weaponName = loadout.weapon ? loadout.weapon.name : "未配备武器";
+    const budgetUsed = ((loadout.totalCost / currentBudget) * 100).toFixed(0);
+    
+    let comment = "";
+    
+    if (currentPlayerType === "鼠鼠") {
+        comment = `🐭 吱吱！为你准备了一套适合跑路的装备。带上了大背包(${loadout.gear.backpack?.name || '默认'})方便捡垃圾，武器选了便宜的${weaponName}防身。遇到人记得丢烟雾弹跑路哦！`;
+    } else if (currentPlayerType === "堵点夺舍") {
+        comment = `🕵️ 嘘...这套装备很适合当老六。${weaponName}爆发高，适合偷袭。听力头盔帮你更早发现敌人。找个好位置蹲着吧，快递很快就到！`;
+    } else {
+        comment = `💥 兄弟们跟我冲！这套${formatPrice(loadout.totalCost)}的装备绝对顶。${weaponName}火力全开，防具也是杠杠的。直接去资源点刚枪吧！`;
+    }
+    
+    // Check if budget usage is low
+    if (parseInt(budgetUsed) < 60) {
+        comment += ` (提示：预算还有剩，要不要升级一下武器？)`;
+    }
+    
+    // Add to chat
+    addMessageToChat(comment, 'ai');
+    
+    // Ensure chat is visible (scroll to it if needed, or just highlight)
+    const chatContainer = document.getElementById('chatContainer');
+    if (chatContainer) {
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+        // Optional: flash the chat container to draw attention
+        chatContainer.classList.add('highlight-chat');
+        setTimeout(() => chatContainer.classList.remove('highlight-chat'), 1000);
     }
 }
 
