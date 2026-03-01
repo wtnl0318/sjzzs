@@ -254,28 +254,40 @@
         <section id="faq">
             <div class="flex items-center mb-6">
                 <div class="w-1 h-8 bg-green-500 mr-3"></div>
-                <h2 class="text-2xl font-bold">🤖 智能助手</h2>
+                <h2 class="text-2xl font-bold">🤖 派宝指挥中心</h2>
                 <span class="ml-3 px-3 py-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full text-xs font-semibold animate-pulse">
-                    ✨ 已接入AI
+                    ✨ AI在线中
                 </span>
             </div>
             
-            <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
-                <div class="flex items-center mb-6">
-                    <div class="w-14 h-14 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center mr-4 breathe">
-                        <i class="fas fa-robot text-2xl"></i>
+            <div class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 relative overflow-hidden">
+                <!-- 背景装饰 -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500 opacity-5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-500 opacity-5 rounded-full blur-3xl -ml-32 -mb-32 pointer-events-none"></div>
+
+                <div class="flex items-center mb-6 relative z-10">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center mr-4 breathe shadow-lg border-2 border-gray-700">
+                        <img src="logo.jpg" alt="派宝" class="w-full h-full rounded-full object-cover opacity-90">
                     </div>
                     <div>
-                        <h3 class="text-xl font-bold">派宝</h3>
-                        <p class="text-gray-400 text-sm">专业配装顾问</p>
+                        <h3 class="text-xl font-bold flex items-center">
+                            派宝
+                            <span class="ml-2 text-xs bg-gray-700 px-2 py-0.5 rounded text-gray-400">v2.0</span>
+                        </h3>
+                        <p class="text-gray-400 text-sm">您的专属战术配装顾问</p>
                     </div>
-                    <div class="ml-auto flex items-center text-xs text-green-400">
-                        <span class="w-2 h-2 bg-green-400 rounded-full mr-1 animate-pulse"></span>
-                        在线
+                    <div class="ml-auto flex flex-col items-end text-xs text-green-400">
+                        <div class="flex items-center mb-1">
+                            <span class="w-2 h-2 bg-green-400 rounded-full mr-1 animate-pulse"></span>
+                            系统正常
+                        </div>
+                        <div class="text-gray-500">
+                            响应时间: <span class="text-gray-300">0.2s</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div id="chatContainer" class="h-80 overflow-y-auto mb-4 p-4 bg-gray-900 rounded-lg border border-gray-700">
+                <div id="chatContainer" class="h-96 overflow-y-auto mb-4 p-4 bg-gray-900/80 rounded-lg border border-gray-700 shadow-inner backdrop-blur-sm">
                     <div class="chat-message ai">
                         <div class="flex">
                             <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
@@ -283,43 +295,51 @@
                             </div>
                             <div>
                                 <p class="text-sm text-gray-400 mb-1">派宝 <span class="text-xs text-purple-400">AI</span></p>
-                                <div class="bg-gray-700 p-3 rounded-lg">
-                                    你好！我是派宝，已接入智谱AI，可以智能回答配装问题：
-                                    <br><br>
-                                    🎯 <strong>玩法配装</strong> - 鼠鼠/堵点/猛攻流<br>
-                                    🔫 <strong>武器推荐</strong> - 各价位性价比武器<br>
-                                    👤 <strong>干员选择</strong> - 根据玩法推荐干员<br>
-                                    🗺️ <strong>地图战术</strong> - 各地图攻略建议
+                                <div class="bg-gray-700 p-3 rounded-lg shadow-md">
+                                    👋 嗨！我是派宝，您的智能战术助手。<br>
+                                    我可以为您提供：<br>
+                                    🎯 <strong>个性化配装</strong> - 根据您的预算和打法<br>
+                                    💡 <strong>战术建议</strong> - 针对不同地图的策略<br>
+                                    🔍 <strong>装备分析</strong> - 解释为什么选择这把枪<br>
+                                    <br>
+                                    请告诉我您的需求，或者直接点击上方的"生成配装方案"！
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="flex">
-                    <input type="text" id="questionInput" placeholder="输入您的问题，例如：鼠鼠怎么配装？" 
-                           class="flex-grow bg-gray-700 rounded-l-lg p-4 focus:outline-none focus:ring-2 focus:ring-purple-500 border border-gray-600">
-                    <button id="askBtn" class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 px-8 rounded-r-lg transition-all font-semibold">
+                <div class="flex relative z-10">
+                    <input type="text" id="questionInput" placeholder="输入您的问题，例如：为什么推荐这把M14？" 
+                           class="flex-grow bg-gray-700/80 rounded-l-lg p-4 focus:outline-none focus:ring-2 focus:ring-purple-500 border border-gray-600 text-white placeholder-gray-400 backdrop-blur-sm">
+                    <button id="askBtn" class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 px-8 rounded-r-lg transition-all font-bold shadow-lg transform hover:scale-105 active:scale-95">
                         <i class="fas fa-paper-plane mr-2"></i>发送
                     </button>
                 </div>
                 
-                <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-2">
-                    <button class="quick-question-btn bg-gray-700 hover:bg-gray-600 p-3 rounded-lg text-sm transition-all border border-gray-600" data-question="鼠鼠怎么配装？">
+                <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3 relative z-10">
+                    <button class="quick-question-btn bg-gray-700/80 hover:bg-gray-600 p-3 rounded-lg text-sm transition-all border border-gray-600 flex items-center justify-center hover:shadow-md backdrop-blur-sm" data-question="鼠鼠怎么配装？">
                         <i class="fas fa-mouse mr-2 text-yellow-400"></i>鼠鼠配装
                     </button>
-                    <button class="quick-question-btn bg-gray-700 hover:bg-gray-600 p-3 rounded-lg text-sm transition-all border border-gray-600" data-question="猛攻流需要什么武器？">
+                    <button class="quick-question-btn bg-gray-700/80 hover:bg-gray-600 p-3 rounded-lg text-sm transition-all border border-gray-600 flex items-center justify-center hover:shadow-md backdrop-blur-sm" data-question="猛攻流需要什么武器？">
                         <i class="fas fa-fist-raised mr-2 text-red-400"></i>猛攻武器
                     </button>
-                    <button class="quick-question-btn bg-gray-700 hover:bg-gray-600 p-3 rounded-lg text-sm transition-all border border-gray-600" data-question="堵桥用什么干员？">
-                        <i class="fas fa-bridge mr-2 text-blue-400"></i>堵桥干员
+                    <button class="quick-question-btn bg-gray-700/80 hover:bg-gray-600 p-3 rounded-lg text-sm transition-all border border-gray-600 flex items-center justify-center hover:shadow-md backdrop-blur-sm" data-question="怎么打零号大坝？">
+                        <i class="fas fa-map mr-2 text-green-400"></i>大坝攻略
                     </button>
-                    <button class="quick-question-btn bg-gray-700 hover:bg-gray-600 p-3 rounded-lg text-sm transition-all border border-gray-600" data-question="零号大坝怎么玩？">
-                        <i class="fas fa-map mr-2 text-green-400"></i>零号大坝
+                    <button class="quick-question-btn bg-gray-700/80 hover:bg-gray-600 p-3 rounded-lg text-sm transition-all border border-gray-600 flex items-center justify-center hover:shadow-md backdrop-blur-sm" data-question="目前的配装有什么优缺点？">
+                        <i class="fas fa-chart-pie mr-2 text-blue-400"></i>分析配装
                     </button>
                 </div>
             </div>
         </section>
+        
+        <!-- 悬浮唤醒按钮 -->
+        <div id="agent-fab" class="fixed bottom-8 right-8 z-50 hidden md:block">
+            <button class="w-14 h-14 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-lg flex items-center justify-center transform hover:scale-110 transition-all animate-bounce" onclick="document.getElementById('faq').scrollIntoView({behavior: 'smooth'})" title="呼叫派宝">
+                <i class="fas fa-robot text-white text-2xl"></i>
+            </button>
+        </div>
         
         <!-- 关于 -->
         <section id="about" class="mt-12">
